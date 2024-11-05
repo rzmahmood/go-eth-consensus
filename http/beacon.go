@@ -183,3 +183,8 @@ func (b *BeaconEndpoint) GetBlockAttestations(id BlockId) ([]*consensus.Attestat
 	err := b.c.Get("/eth/v1/beacon/blocks/"+id.BlockID()+"/attestations", &out)
 	return out, err
 }
+
+func (b *BeaconEndpoint) GetBeaconState(id BlockId, state consensus.BeaconState) error {
+	err := b.c.Get("/eth/v2/debug/beacon/states/"+id.BlockID(), &state)
+	return err
+}

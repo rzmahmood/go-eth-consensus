@@ -72,4 +72,10 @@ func TestBeaconEndpoint(t *testing.T) {
 		_, err := n.GetBlockAttestations(Genesis)
 		assert.NoError(t, err)
 	})
+
+	t.Run("GetBeaconState", func(t *testing.T) {
+		var beaconState consensus.BeaconStateDencun
+		err := n.GetBeaconState(Head, &beaconState)
+		assert.NoError(t, err)
+	})
 }

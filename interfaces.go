@@ -47,3 +47,6 @@ func (s *BeaconStateBellatrix) isBeaconState() {
 
 func (s *BeaconStateCapella) isBeaconState() {
 }
+
+func (s *BeaconStateDencun) isBeaconState() {
+}
