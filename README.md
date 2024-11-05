@@ -23,6 +23,9 @@ The core of this library was initially part of [eth2-validator](https://github.c
 $ go get github.com/umbracle/go-eth-consensus
 ```
 
+## Contributing
+Run `go run sszgen/*.go --path ../go-eth-consensus/structs.go` to regenerate SSZ bindings while in the fastssz folder
+
 ## Bls benchmark
 
 Benchmark for both BLS implementations:
