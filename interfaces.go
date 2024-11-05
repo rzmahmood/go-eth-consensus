@@ -32,6 +32,8 @@ func (s *BeaconBlockBellatrix) isBeaconBlock() {
 func (s *BeaconBlockCapella) isBeaconBlock() {
 }
 
+func (s *BeaconBlockDencun) isBeaconBlock() {}
+
 type BeaconState interface {
 	isBeaconState()
 }
