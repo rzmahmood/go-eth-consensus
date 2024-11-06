@@ -616,17 +616,17 @@ type LightClientUpdateCapella struct {
 }
 
 // /////////////////////
-// // DENCUN
+// // Deneb
 // /////////////////////
-type BeaconBlockDencun struct {
-	Slot          uint64                 `json:"slot"`
-	ProposerIndex uint64                 `json:"proposer_index"`
-	ParentRoot    Root                   `json:"parent_root" ssz-size:"32"`
-	StateRoot     Root                   `json:"state_root" ssz-size:"32"`
-	Body          *BeaconBlockBodyDencun `json:"body"`
+type BeaconBlockDeneb struct {
+	Slot          uint64                `json:"slot"`
+	ProposerIndex uint64                `json:"proposer_index"`
+	ParentRoot    Root                  `json:"parent_root" ssz-size:"32"`
+	StateRoot     Root                  `json:"state_root" ssz-size:"32"`
+	Body          *BeaconBlockBodyDeneb `json:"body"`
 }
 
-type ExecutionPayloadDencun struct {
+type ExecutionPayloadDeneb struct {
 	ParentHash    [32]byte      `ssz-size:"32" json:"parent_hash"`
 	FeeRecipient  [20]byte      `ssz-size:"20" json:"fee_recipient"`
 	StateRoot     [32]byte      `ssz-size:"32" json:"state_root"`
@@ -646,7 +646,7 @@ type ExecutionPayloadDencun struct {
 	ExcessBlobGas uint64        `json:"excess_blob_gas"`
 }
 
-type BeaconBlockBodyDencun struct {
+type BeaconBlockBodyDeneb struct {
 	RandaoReveal          Signature                     `json:"randao_reveal" ssz-size:"96"`
 	Eth1Data              *Eth1Data                     `json:"eth1_data"`
 	Graffiti              [32]byte                      `json:"graffiti" ssz-size:"32"`
@@ -656,44 +656,44 @@ type BeaconBlockBodyDencun struct {
 	Deposits              []*Deposit                    `json:"deposits" ssz-max:"16"`
 	VoluntaryExits        []*SignedVoluntaryExit        `json:"voluntary_exits" ssz-max:"16"`
 	SyncAggregate         *SyncAggregate                `json:"sync_aggregate"`
-	ExecutionPayload      *ExecutionPayloadDencun       `json:"execution_payload"`
+	ExecutionPayload      *ExecutionPayloadDeneb        `json:"execution_payload"`
 	BlsToExecutionChanges []*SignedBLSToExecutionChange `json:"bls_to_execution_changes" ssz-max:"16"`
 	BlobKzgCommitments    [][48]byte                    `json:"blob_kzg_commitments" ssz-max:"4096,48"`
 }
 
-// BeaconStateDencun with Dencun types
-type BeaconStateDencun struct {
-	GenesisTime                  uint64                        `json:"genesis_time"`
-	GenesisValidatorsRoot        [32]byte                      `json:"genesis_validators_root" ssz-size:"32"`
-	Slot                         uint64                        `json:"slot"`
-	Fork                         *Fork                         `json:"fork"`
-	LatestBlockHeader            *BeaconBlockHeader            `json:"latest_block_header"`
-	BlockRoots                   [8192][32]byte                `json:"block_roots" ssz-size:"8192,32"`
-	StateRoots                   [8192][32]byte                `json:"state_roots" ssz-size:"8192,32"`
-	HistoricalRoots              [][]byte                      `json:"historical_roots" ssz-max:"16777216" ssz-size:"?,32"`
-	Eth1Data                     *Eth1Data                     `json:"eth1_data"`
-	Eth1DataVotes                []*Eth1Data                   `json:"eth1_data_votes" ssz-max:"2048"`
-	Eth1DepositIndex             uint64                        `json:"eth1_deposit_index"`
-	Validators                   []*Validator                  `json:"validators" ssz-max:"1099511627776"`
-	Balances                     []uint64                      `json:"balances" ssz-max:"1099511627776"`
-	RandaoMixes                  [65536][32]byte               `json:"randao_mixes" ssz-size:"65536,32"`
-	Slashings                    []uint64                      `json:"slashings" ssz-size:"8192"`
-	PreviousEpochParticipation   []byte                        `json:"previous_epoch_participation" ssz-max:"1099511627776"`
-	CurrentEpochParticipation    []byte                        `json:"current_epoch_participation" ssz-max:"1099511627776"`
-	JustificationBits            [1]byte                       `json:"justification_bits" ssz-size:"1"`
-	PreviousJustifiedCheckpoint  *Checkpoint                   `json:"previous_justified_checkpoint"`
-	CurrentJustifiedCheckpoint   *Checkpoint                   `json:"current_justified_checkpoint"`
-	FinalizedCheckpoint          *Checkpoint                   `json:"finalized_checkpoint"`
-	InactivityScores             []uint64                      `json:"inactivity_scores" ssz-max:"1099511627776"`
-	CurrentSyncCommittee         *SyncCommittee                `json:"current_sync_committee"`
-	NextSyncCommittee            *SyncCommittee                `json:"next_sync_committee"`
-	LatestExecutionPayloadHeader *ExecutionPayloadHeaderDencun `json:"latest_execution_payload_header"`
-	NextWithdrawalIndex          uint64                        `json:"next_withdrawal_index"`
-	NextWithdrawalValidatorIndex uint64                        `json:"next_withdrawal_validator_index"`
-	HistoricalSummaries          []*HistoricalSummary          `json:"historical_summaries" ssz-max:"16777216"`
+// BeaconStateDeneb with Deneb types
+type BeaconStateDeneb struct {
+	GenesisTime                  uint64                       `json:"genesis_time"`
+	GenesisValidatorsRoot        [32]byte                     `json:"genesis_validators_root" ssz-size:"32"`
+	Slot                         uint64                       `json:"slot"`
+	Fork                         *Fork                        `json:"fork"`
+	LatestBlockHeader            *BeaconBlockHeader           `json:"latest_block_header"`
+	BlockRoots                   [8192][32]byte               `json:"block_roots" ssz-size:"8192,32"`
+	StateRoots                   [8192][32]byte               `json:"state_roots" ssz-size:"8192,32"`
+	HistoricalRoots              [][]byte                     `json:"historical_roots" ssz-max:"16777216" ssz-size:"?,32"`
+	Eth1Data                     *Eth1Data                    `json:"eth1_data"`
+	Eth1DataVotes                []*Eth1Data                  `json:"eth1_data_votes" ssz-max:"2048"`
+	Eth1DepositIndex             uint64                       `json:"eth1_deposit_index"`
+	Validators                   []*Validator                 `json:"validators" ssz-max:"1099511627776"`
+	Balances                     []uint64                     `json:"balances" ssz-max:"1099511627776"`
+	RandaoMixes                  [65536][32]byte              `json:"randao_mixes" ssz-size:"65536,32"`
+	Slashings                    []uint64                     `json:"slashings" ssz-size:"8192"`
+	PreviousEpochParticipation   []byte                       `json:"previous_epoch_participation" ssz-max:"1099511627776"`
+	CurrentEpochParticipation    []byte                       `json:"current_epoch_participation" ssz-max:"1099511627776"`
+	JustificationBits            [1]byte                      `json:"justification_bits" ssz-size:"1"`
+	PreviousJustifiedCheckpoint  *Checkpoint                  `json:"previous_justified_checkpoint"`
+	CurrentJustifiedCheckpoint   *Checkpoint                  `json:"current_justified_checkpoint"`
+	FinalizedCheckpoint          *Checkpoint                  `json:"finalized_checkpoint"`
+	InactivityScores             []uint64                     `json:"inactivity_scores" ssz-max:"1099511627776"`
+	CurrentSyncCommittee         *SyncCommittee               `json:"current_sync_committee"`
+	NextSyncCommittee            *SyncCommittee               `json:"next_sync_committee"`
+	LatestExecutionPayloadHeader *ExecutionPayloadHeaderDeneb `json:"latest_execution_payload_header"`
+	NextWithdrawalIndex          uint64                       `json:"next_withdrawal_index"`
+	NextWithdrawalValidatorIndex uint64                       `json:"next_withdrawal_validator_index"`
+	HistoricalSummaries          []*HistoricalSummary         `json:"historical_summaries" ssz-max:"16777216"`
 }
 
-type ExecutionPayloadHeaderDencun struct {
+type ExecutionPayloadHeaderDeneb struct {
 	ParentHash       [32]byte  `json:"parent_hash" ssz-size:"32"`
 	FeeRecipient     [20]byte  `json:"fee_recipient" ssz-size:"20"`
 	StateRoot        [32]byte  `json:"state_root" ssz-size:"32"`
@@ -710,5 +710,14 @@ type ExecutionPayloadHeaderDencun struct {
 	TransactionsRoot [32]byte  `json:"transactions_root" ssz-size:"32"`
 	WithdrawalRoot   [32]byte  `json:"withdrawals_root" ssz-size:"32"`
 	BlobGasUsed      uint64    `json:"blob_gas_used"`
-	ExcessBlobGas    uint64    `json:"excess_blob_gas"`
+	ExcessBlobGas    uint64 `json:"excess_blob_gas"`
 }
+
+type BeaconBlockWithStateDeneb struct {
+	Slot          uint64                          `json:"slot"`
+	ProposerIndex uint64                          `json:"proposer_index"`
+	ParentRoot    Root                  `json:"parent_root" ssz-size:"32"`
+	BeaconState   *BeaconStateDeneb      `json:"beacon_state"`
+	Body          *BeaconBlockBodyDeneb `json:"body"`
+}
+

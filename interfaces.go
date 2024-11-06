@@ -32,7 +32,7 @@ func (s *BeaconBlockBellatrix) isBeaconBlock() {
 func (s *BeaconBlockCapella) isBeaconBlock() {
 }
 
-func (s *BeaconBlockDencun) isBeaconBlock() {}
+func (s *BeaconBlockDeneb) isBeaconBlock() {}
 
 type BeaconState interface {
 	isBeaconState()
@@ -50,5 +50,5 @@ func (s *BeaconStateBellatrix) isBeaconState() {
 func (s *BeaconStateCapella) isBeaconState() {
 }
 
-func (s *BeaconStateDencun) isBeaconState() {
+func (s *BeaconStateDeneb) isBeaconState() {
 }
